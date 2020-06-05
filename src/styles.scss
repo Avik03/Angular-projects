@@ -11,3 +11,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-size: 100% 100%;
     height:100%; 
 }
+
+.flex-spacer{
+    flex-grow: 1;
+}
+.flight-item{
+    background-color: #fff;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.36);
+    border-radius: 5px;
+}
+.airline-thumbnail{
+    padding:0.25rem;
+    max-width: 100%;
+    height: auto;
+}
+.font-lightgrey{
+    color:#999;
+}
+.p-22{
+    padding:22px
+}
+.font-20{
+    font-size: 20px;
+}
+.p-25{
+    padding:25px;
+}

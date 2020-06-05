@@ -3,16 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login"; 
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";  
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { CustomMaterialModule } from './common/material.module';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { FlightListComponent } from './flight-list/flight-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { AuthService } from './services/auth.service';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FlightService } from './services/flight.service';
+import { TimestampPipe } from './flight-list/timestamp.pipe';
 
-
-
-export function provideConfig() {
+/*export function provideConfig() {
   let config = new AuthServiceConfig([
     {
       id: GoogleLoginProvider.PROVIDER_ID,
@@ -24,26 +30,31 @@ export function provideConfig() {
     }
   ]);
   return config;
-}
+}*/
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    FlightListComponent,
+    NavbarComponent,
+    TimestampPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
-    SocialLoginModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireModule,
+    AngularFireDatabaseModule
   ],
   providers: [
-    {  
-      provide: AuthServiceConfig,  
-      useFactory: provideConfig  
-    }
+    AuthService,
+    FlightService
   ],
   bootstrap: [AppComponent]
 })
