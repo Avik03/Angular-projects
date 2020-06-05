@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1>FlightCheck</h1>
+      <span class="menu-spacer"></span>
+      <ng-container *ngIf="user$ | async as user; else loginSection">
+        <div >
+          <a mat-button [routerLink]="'/flightlist'"> Flights </a>
+          <a mat-button [routerLink]="'/passengerlist'"> Passenger List </a>
+        </div>
+        <div class="flex-spacer"></div>
+        <button mat-raised-button (click)="signOut()">Logout</button>
+      </ng-container>
+      <ng-template #loginSection>
+        <div class="flex-spacer"></div>
+        <button mat-raised-button (click)="socialSignIn()">Login</button>
+      </ng-template>
+      
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+
+  <!--<button class="btn btn-danger" (click)="signOut()">Sign out</button>-->

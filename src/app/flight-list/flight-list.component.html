@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="flight-list-wrap mt-3">
+        <div class="flight-list-header">
+            <h2>Flight List</h2>
+        </div>
+        
+        <div class="flight-list-body mt-3">
+            <div class="flight-item mt-4" *ngFor="let flight of flights">
+                <div class="flight-details row">
+                    <div class="flight-no-sec col-lg-3">
+                        <div class="flight-info">
+                            <div class="d-inline-flex p-4">
+                                <div class="airline-logo col-4 m-auto">
+                                    <img src="../assets/images/flight-logo-small.jpg" alt="..." class="airline-thumbnail">
+                                </div>
+                                <div class="airline-name col-8">
+                                    <p class="mb-0 font-20">AirJet</p>
+                                    <p class="mb-0 font-lightgrey">{{flight.flightNo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flight-duration-sec col-lg-6">
+                        <div class="d-flex p-22">
+                            <div class="flight-timing-sec col-7">
+                                <div class="d-flex">
+                                    <div class="departure-time col-5">
+                                        <p class="mb-0 font-20">{{flight.departureTime | convertTimestamp | date:'shortTime'}}</p>
+                                        <p class="mb-0 font-lightgrey">{{flight.departureCity}}</p>
+                                    </div>
+                                    <div class="col-2">--</div>
+                                    <div class="arrival-time col-5">
+                                        <p class="mb-0 font-20">{{flight.arrivalTime | convertTimestamp | date:'shortTime'}}</p>
+                                        <p class="mb-0 font-lightgrey">{{flight.arrivalCity}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-duration-sec col-5">
+                                <p class="mb-0 font-20">{{flight.duration}}</p>
+                                <p class="mb-0 font-lightgrey">Non Stop</p>
+                            </div>
+                        </div>        
+                    </div>
+                    <div class="flight-passeneger-check col-lg-3">
+                        <div class="p-25 text-right">
+                            <button mat-raised-button color="accent">Passenger List</button>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
